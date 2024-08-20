@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Structure</title>
+    <style>
+        /* Centering the entire content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 10;
+            background-image:url(https://static.vecteezy.com/system/resources/thumbnails/001/555/348/small_2x/grey-white-geometric-abstract-background-free-vector.jpg);
+background-size:cover;
+        }
+
+        .container {
+            padding: 50px;
+            border: 2px solid black;
+            background-color: lightgrey;
+            text-align: center;
+        }
+
+        button {
+            padding: 30px 40px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .changed {
+            background-color: lightcoral;
+        }
+
+        .changed-button {
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="toggleButton">Change</button>
+        <p id="text">This is some text.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('toggleButton');
+            const container = document.querySelector('.container');
+            const text = document.getElementById('text');
+
+            let isChanged = false;
+
+            button.addEventListener('click', () => {
+                if (isChanged) {
+                    // Revert to original state
+                    button.textContent = 'Change';
+                    container.classList.remove('changed');
+                    button.classList.remove('changed-button');
+                    text.textContent = 'This is some text.';
+                } else {
+                    // Change to new state
+                    button.textContent = 'Reset';
+                    container.classList.add('changed');
+                    button.classList.add('changed-button');
+                    text.textContent = 'Text has changed!';
+                }
+                isChanged = !isChanged;
+            });
+        });
+    </script>
+</body>
+</html>
